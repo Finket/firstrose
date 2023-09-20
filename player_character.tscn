@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnxk4t7tt0uta"]
+
+[ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_ynxa0"]
+[ext_resource type="Texture2D" uid="uid://bld750m4na710" path="res://sprites/dev_character.png" id="2_5o2ki"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_fwdps"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a5khl"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_ynxa0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0.96, 0)
+cast_shadow = 0
+gi_mode = 0
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_5o2ki")
+
+[node name="PlayerCamera" type="Camera3D" parent="Sprite3D" node_paths=PackedStringArray("target", "board")]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 1, 0, 0.75, 4)
+fov = 90.0
+far = 800.0
+script = ExtResource("3_fwdps")
+target = NodePath("")
+board = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96, 0)
+shape = SubResource("BoxShape3D_a5khl")
