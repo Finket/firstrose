@@ -14,7 +14,7 @@ var cell_size : float = 2.0
 # mouse raycast length
 const ray_length = 1000
 # The game board containing the pathing script
-@onready var board : Node3D = get_node("../../../")
+@onready var board : Node3D = get_node("/root/main/Board")
 # Whether or not the target should be moving
 # var moving_along_path : bool = false
 
