@@ -22,7 +22,7 @@ func _ready():
 	# await get_tree().create_timer(1).timeout
 	look_at_target()
 	
-	print(board)
+	# print(board)
 
 func _input(event):
 	if is_multiplayer_authority():
