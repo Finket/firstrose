@@ -6,8 +6,10 @@ var path = []
 var path_ind = 0
 const move_speed = 4
 
-func _ready():
-	set_name.call_deferred(str(get_multiplayer_authority()))
+
+#func _ready():
+#	synchronizer.set_multiplayer_authority(str(name).to_int())
+#	set_name.call_deferred(str(get_multiplayer_authority()))
 	# add_to_group('units')
 
 func _physics_process(_delta):
@@ -18,7 +20,7 @@ func _physics_process(_delta):
 			path_ind += 1
 		else:
 			set_velocity(move_vec.normalized() * move_speed)
-			rpc("remote_set_position", global_position)
+			#rpc("remote_set_position", global_position)
 			move_and_slide()
 
 func move_to(new_path):
@@ -26,10 +28,10 @@ func move_to(new_path):
 	path = new_path
 	path_ind = 0
 
-@rpc("unreliable")
-func remote_set_position(authority_position):
-	global_position = authority_position
-
-@rpc("authority", "call_local", "reliable", 1)
-func display_message(message):
-	$Message.text = str(message)
+#@rpc("unreliable")
+#func remote_set_position(authority_position):
+#	global_position = authority_position
+#
+#@rpc("authority", "call_local", "reliable", 1)
+#func display_message(message):
+#	$Message.text = str(message)

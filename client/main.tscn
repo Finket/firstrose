@@ -96,7 +96,7 @@ handle_input_locally = false
 size = Vector2i(580, 420)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="UILayer/Control/SubViewportContainer/SubViewport"]
+[node name="TestCamera" type="Camera3D" parent="UILayer/Control/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.816541, 0.577288, 0, -0.577288, 0.816541, 0, 4.5952, 4.91563)
 
 [node name="NetworkInfo" type="VBoxContainer" parent="UILayer/Control"]
@@ -119,6 +119,7 @@ text = "Peer ID
 label_settings = SubResource("LabelSettings_1lwj5")
 
 [node name="StartMenu" type="VBoxContainer" parent="UILayer/Control"]
+layout_mode = 0
 offset_left = 255.0
 offset_top = 118.0
 offset_right = 366.0

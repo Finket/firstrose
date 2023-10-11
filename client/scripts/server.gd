@@ -5,7 +5,7 @@ var multiplayer_peer = ENetMultiplayerPeer.new()
 @onready var menu = $UILayer/Control/StartMenu
 
 func _on_join_pressed():
-	var port = str($UILayer/Control/StartMenu/PortNumber.txt).to_int()
+	var port = str($UILayer/Control/StartMenu/PortNumber.text).to_int()
 	multiplayer_peer.create_client("localhost", port)
 	multiplayer.multiplayer_peer = multiplayer_peer
 	menu.visible = false

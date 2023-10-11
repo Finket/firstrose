@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnxk4t7tt0uta"]
+[gd_scene load_steps=6 format=3 uid="uid://bnxk4t7tt0uta"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_ynxa0"]
 [ext_resource type="Texture2D" uid="uid://bld750m4na710" path="res://sprites/dev_character.png" id="2_5o2ki"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a5khl"]
 size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ikqix"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ynxa0")
@@ -27,3 +33,7 @@ script = ExtResource("3_fwdps")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96, 0)
 shape = SubResource("BoxShape3D_a5khl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.125
+replication_config = SubResource("SceneReplicationConfig_ikqix")

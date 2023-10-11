@@ -1,5 +1,7 @@
 extends Camera3D
 
+@onready var synchronizer = get_node("../../MultiplayerSynchronizer")
+
 # The parent target to orbit around
 @onready var target : CharacterBody3D = get_node("../").get_parent()
 # The rotation speed
@@ -19,13 +21,17 @@ const ray_length = 1000
 # var moving_along_path : bool = false
 
 func _ready():
+	print(synchronizer)
+	synchronizer.set_multiplayer_authority(str(target.name).to_int())
+	print(synchronizer.is_multiplayer_authority())
+	current = synchronizer.is_multiplayer_authority()
 	# await get_tree().create_timer(1).timeout
 	look_at_target()
 	
 	# print(board)
 
 func _input(event):
-	if is_multiplayer_authority():
+	if synchronizer.is_multiplayer_authority():
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE) and event is InputEventMouseMotion:
 			rotate_camera(event)
 		
