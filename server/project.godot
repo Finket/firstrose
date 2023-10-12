@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor]
+
+run/main_run_args="--headless -- port=9999 max-players=16"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
