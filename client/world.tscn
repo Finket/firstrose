@@ -13,7 +13,7 @@ font_color = Color(1, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_1lwj5"]
 font_color = Color(1, 0, 0, 1)
 
-[node name="World" type="Node3D"]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_w5wvi")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
