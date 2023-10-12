@@ -6,6 +6,7 @@ CURRENT TODO:
 - 8-directional sprite movement based on camera orientation and movement direction. Using just dev-sprites (arrows) for now.
 - Ability to enter display names which show up in Chat and when a player is hovered over/clicked/right-clicked? Just implement Peer ID for now.
 - Add an admin client
+- Specify server IP address on client
 - Export Linux server
 
 Future:
