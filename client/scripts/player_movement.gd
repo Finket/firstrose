@@ -6,6 +6,8 @@ var path = []
 var path_ind = 0
 const move_speed = 4
 
+func _enter_tree():
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
 #func _ready():
 #	synchronizer.set_multiplayer_authority(str(name).to_int())

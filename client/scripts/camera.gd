@@ -4,6 +4,7 @@ extends Camera3D
 
 # The parent target to orbit around
 @onready var target : CharacterBody3D = get_node("../").get_parent()
+
 # The rotation speed
 var rotation_speed : float = 0.025
 # The current horizontal rotation angle
@@ -22,7 +23,7 @@ const ray_length = 1000
 
 func _ready():
 	print(synchronizer)
-	synchronizer.set_multiplayer_authority(str(target.name).to_int())
+	#synchronizer.set_multiplayer_authority(str(target.name).to_int())
 	print(synchronizer.is_multiplayer_authority())
 	current = synchronizer.is_multiplayer_authority()
 	# await get_tree().create_timer(1).timeout
