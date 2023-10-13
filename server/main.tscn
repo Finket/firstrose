@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq67cgsgod0ri"]
+[gd_scene load_steps=2 format=3 uid="uid://dq67cgsgod0ri"]
 
 [ext_resource type="Script" path="res://server.gd" id="1_enm5g"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ucgs2"]
-properties/0/path = NodePath(".:text")
-properties/0/spawn = true
-properties/0/sync = false
-properties/0/watch = true
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -40,6 +34,10 @@ text = "Start"
 _spawnable_scenes = PackedStringArray("res://player_character_info.tscn")
 spawn_path = NodePath("../UILayer/Control/SubViewportContainer/SubViewport")
 
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://chat_box_info.tscn")
+spawn_path = NodePath("../UILayer/Control")
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UILayer"]
@@ -56,15 +54,5 @@ offset_bottom = 40.0
 [node name="SubViewport" type="SubViewport" parent="UILayer/Control/SubViewportContainer"]
 handle_input_locally = false
 render_target_update_mode = 4
-
-[node name="TextEdit" type="TextEdit" parent="UILayer/Control"]
-visible = false
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UILayer/Control/TextEdit"]
-replication_interval = 0.083
-replication_config = SubResource("SceneReplicationConfig_ucgs2")
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]

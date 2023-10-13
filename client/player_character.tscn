@@ -40,9 +40,10 @@ replication_interval = 0.083
 replication_config = SubResource("SceneReplicationConfig_hgjw5")
 
 [node name="Message" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2.2, 0)
 billboard = 1
 double_sided = false
+fixed_size = true
 modulate = Color(1, 1, 0, 1)
 text = "This is placeholder text did you know that? There should probably be a reasonable limit on the size of this thing."
 font_size = 42

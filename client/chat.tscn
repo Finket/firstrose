@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dad42yo7gnl8s"]
+
+[ext_resource type="Script" path="res://scripts/chat_send.gd" id="1_ap8q2"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bnkv7"]
+properties/0/path = NodePath(".:text")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+
+[node name="Chat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ap8q2")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 20.0
+offset_top = 442.0
+offset_right = 600.0
+offset_bottom = 564.0
+theme_override_colors/font_color = Color(0, 0.8, 0.8, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 10
+text = "Welcome to firstrose dev version."
+editable = false
+context_menu_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_v_scroll_speed = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="TextEdit"]
+replication_interval = 0.083
+replication_config = SubResource("SceneReplicationConfig_bnkv7")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 20.0
+offset_top = 566.0
+offset_right = 600.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 10
+placeholder_text = "type here to chat"
+max_length = 240
+metadata/_edit_use_anchors_ = true

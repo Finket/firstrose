@@ -22,12 +22,20 @@ func _ready():
 	multiplayer.multiplayer_peer = multiplayer_peer
 	multiplayer_peer.peer_connected.connect(func(id): add_player_character(id))
 	print("Server started.")
+	load_chat()
+	
 
 
 func add_player_character(id=1):
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	var character = preload("res://player_character_info.tscn").instantiate()
 	var subviewport = $UILayer/Control/SubViewportContainer/SubViewport
 	character.name = str(id)
 	subviewport.add_child(character)
 	print("Player " + character.name + " joined, character added.")
+
+func load_chat():
+	var chatbox = preload("res://chat_box_info.tscn").instantiate()
+	var control = $UILayer/Control
+	control.add_child(chatbox)
+	print("Chat loaded.")

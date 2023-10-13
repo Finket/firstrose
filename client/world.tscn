@@ -1,23 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4snh7bprmdeq"]
+[gd_scene load_steps=6 format=3 uid="uid://b4snh7bprmdeq"]
 
 [ext_resource type="Script" path="res://scripts/server.gd" id="1_w5wvi"]
-[ext_resource type="Script" path="res://scripts/chat_send.gd" id="2_44lc5"]
 [ext_resource type="Texture2D" uid="uid://bflmoeu7b8dx4" path="res://ui/dev_ui.png" id="3_12j77"]
 [ext_resource type="PackedScene" uid="uid://dxv8682dqiwjq" path="res://models/dev_level.tscn" id="6_iykyq"]
 [ext_resource type="Script" path="res://scripts/pathing.gd" id="6_jenf4"]
 [ext_resource type="MeshLibrary" uid="uid://bsntenl3uqma0" path="res://models/astar_tiles.tres" id="7_kcfax"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hok6y"]
-properties/0/path = NodePath(".:text")
-properties/0/spawn = true
-properties/0/sync = false
-properties/0/watch = true
-
-[sub_resource type="LabelSettings" id="LabelSettings_shubd"]
-font_color = Color(1, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_1lwj5"]
-font_color = Color(1, 0, 0, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_w5wvi")
@@ -44,7 +31,6 @@ data = {
 }
 
 [node name="UILayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_44lc5")
 
 [node name="Control" type="Control" parent="UILayer"]
 texture_filter = 1
@@ -63,38 +49,6 @@ texture = ExtResource("3_12j77")
 stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="TextEdit" type="TextEdit" parent="UILayer/Control"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 442.0
-offset_right = 600.0
-offset_bottom = 564.0
-theme_override_colors/font_color = Color(0, 0.8, 0.8, 1)
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 10
-text = "Welcome to firstrose dev version."
-editable = false
-context_menu_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_v_scroll_speed = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UILayer/Control/TextEdit"]
-replication_interval = 0.083
-replication_config = SubResource("SceneReplicationConfig_hok6y")
-
-[node name="LineEdit" type="LineEdit" parent="UILayer/Control"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 566.0
-offset_right = 600.0
-offset_bottom = 596.0
-theme_override_font_sizes/font_size = 10
-placeholder_text = "type here to chat"
-max_length = 240
-metadata/_edit_use_anchors_ = true
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UILayer/Control"]
 layout_mode = 0
 offset_left = 20.0
@@ -109,25 +63,6 @@ render_target_update_mode = 4
 
 [node name="TestCamera" type="Camera3D" parent="UILayer/Control/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.816541, 0.577288, 0, -0.577288, 0.816541, 0, 4.5952, 4.91563)
-
-[node name="NetworkInfo" type="VBoxContainer" parent="UILayer/Control"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 131.0
-offset_bottom = 73.0
-
-[node name="NetworkSideDisplay" type="Label" parent="UILayer/Control/NetworkInfo"]
-layout_mode = 2
-text = "Network Side
-"
-label_settings = SubResource("LabelSettings_shubd")
-
-[node name="UniquePeerID" type="Label" parent="UILayer/Control/NetworkInfo"]
-layout_mode = 2
-text = "Peer ID
-"
-label_settings = SubResource("LabelSettings_1lwj5")
 
 [node name="StartMenu" type="VBoxContainer" parent="UILayer/Control"]
 layout_mode = 0
@@ -148,6 +83,10 @@ alignment = 1
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://player_character.tscn")
 spawn_path = NodePath("../UILayer/Control/SubViewportContainer/SubViewport")
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://chat.tscn")
+spawn_path = NodePath("../UILayer/Control")
 
 [connection signal="pressed" from="UILayer/Control/StartMenu/JoinButton" to="." method="_on_join_pressed"]
 

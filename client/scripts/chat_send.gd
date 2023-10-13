@@ -1,12 +1,13 @@
-extends CanvasLayer
+extends Control
 
 var chatTextEdit
 var inputLineEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	chatTextEdit = $Control/TextEdit
-	inputLineEdit = $Control/LineEdit
+	await get_tree().create_timer(2).timeout
+	chatTextEdit = $TextEdit
+	inputLineEdit = $LineEdit
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
