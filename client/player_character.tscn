@@ -36,7 +36,7 @@ shape = SubResource("BoxShape3D_a5khl")
 disabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_interval = 0.05
+replication_interval = 0.083
 replication_config = SubResource("SceneReplicationConfig_hgjw5")
 
 [node name="Message" type="Label3D" parent="."]

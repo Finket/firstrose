@@ -8,6 +8,7 @@ CURRENT TODO:
 - Export Linux server
 
 Future:
+- Look into low tickrate and tweening
 - Add basic skills to train
 - Add inventory and items, drops, trading
 - Add item processing skills

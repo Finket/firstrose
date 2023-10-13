@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4snh7bprmdeq"]
+[gd_scene load_steps=10 format=3 uid="uid://b4snh7bprmdeq"]
 
 [ext_resource type="Script" path="res://scripts/server.gd" id="1_w5wvi"]
 [ext_resource type="Script" path="res://scripts/chat_send.gd" id="2_44lc5"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dxv8682dqiwjq" path="res://models/dev_level.tscn" id="6_iykyq"]
 [ext_resource type="Script" path="res://scripts/pathing.gd" id="6_jenf4"]
 [ext_resource type="MeshLibrary" uid="uid://bsntenl3uqma0" path="res://models/astar_tiles.tres" id="7_kcfax"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hok6y"]
+properties/0/path = NodePath(".:text")
+properties/0/spawn = true
+properties/0/sync = false
+properties/0/watch = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_shubd"]
 font_color = Color(1, 0, 0, 1)
@@ -73,6 +79,10 @@ wrap_mode = 1
 autowrap_mode = 1
 scroll_v_scroll_speed = 40.0
 metadata/_edit_use_anchors_ = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UILayer/Control/TextEdit"]
+replication_interval = 0.083
+replication_config = SubResource("SceneReplicationConfig_hok6y")
 
 [node name="LineEdit" type="LineEdit" parent="UILayer/Control"]
 layout_mode = 0

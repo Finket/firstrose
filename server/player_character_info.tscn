@@ -13,6 +13,6 @@ properties/0/watch = false
 script = ExtResource("1_puhpq")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_interval = 0.05
+replication_interval = 0.083
 replication_config = SubResource("SceneReplicationConfig_g01hw")
 script = ExtResource("2_w3iyn")
