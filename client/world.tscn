@@ -64,6 +64,7 @@ offset_top = 442.0
 offset_right = 600.0
 offset_bottom = 564.0
 theme_override_colors/font_color = Color(0, 0.8, 0.8, 1)
+theme_override_constants/line_spacing = -3
 theme_override_font_sizes/font_size = 10
 text = "Welcome to firstrose dev version."
 editable = false

@@ -38,3 +38,14 @@ disabled = true
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.05
 replication_config = SubResource("SceneReplicationConfig_hgjw5")
+
+[node name="Message" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+billboard = 1
+double_sided = false
+modulate = Color(1, 1, 0, 1)
+text = "This is placeholder text did you know that? There should probably be a reasonable limit on the size of this thing."
+font_size = 42
+line_spacing = -20.0
+autowrap_mode = 2
+width = 800.0
