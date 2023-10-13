@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dad42yo7gnl8s"]
+[gd_scene load_steps=5 format=3 uid="uid://dad42yo7gnl8s"]
 
 [ext_resource type="Script" path="res://scripts/chat_send.gd" id="1_ap8q2"]
+[ext_resource type="Script" path="res://scripts/TextEdit.gd" id="2_lxell"]
+[ext_resource type="Script" path="res://scripts/Sync.gd" id="3_ta8j6"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bnkv7"]
-properties/0/path = NodePath(".:text")
+properties/0/path = NodePath("Sync:text")
 properties/0/spawn = true
 properties/0/sync = true
 properties/0/watch = false
@@ -19,6 +21,7 @@ mouse_filter = 2
 script = ExtResource("1_ap8q2")
 
 [node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 442.0
 offset_right = 600.0
@@ -32,13 +35,19 @@ context_menu_enabled = false
 wrap_mode = 1
 autowrap_mode = 1
 scroll_v_scroll_speed = 40.0
+script = ExtResource("2_lxell")
 metadata/_edit_use_anchors_ = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="TextEdit"]
 replication_interval = 0.083
 replication_config = SubResource("SceneReplicationConfig_bnkv7")
 
+[node name="Sync" type="Node" parent="TextEdit"]
+script = ExtResource("3_ta8j6")
+text = "Welcome to firstrose dev version."
+
 [node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 566.0
 offset_right = 600.0
