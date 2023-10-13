@@ -25,7 +25,9 @@ func _ready():
 
 
 func add_player_character(id=1):
+	await get_tree().create_timer(1).timeout
 	var character = preload("res://player_character_info.tscn").instantiate()
+	var subviewport = $UILayer/Control/SubViewportContainer/SubViewport
 	character.name = str(id)
-	add_child(character)
-	print("Player joined, character added.")
+	subviewport.add_child(character)
+	print("Player " + character.name + " joined, character added.")

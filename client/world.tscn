@@ -125,10 +125,6 @@ offset_top = 118.0
 offset_right = 366.0
 offset_bottom = 224.0
 
-[node name="HostButton" type="Button" parent="UILayer/Control/StartMenu"]
-layout_mode = 2
-text = "Host"
-
 [node name="JoinButton" type="Button" parent="UILayer/Control/StartMenu"]
 layout_mode = 2
 text = "Join"
@@ -142,7 +138,6 @@ alignment = 1
 _spawnable_scenes = PackedStringArray("res://player_character.tscn")
 spawn_path = NodePath("../UILayer/Control/SubViewportContainer/SubViewport")
 
-[connection signal="pressed" from="UILayer/Control/StartMenu/HostButton" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UILayer/Control/StartMenu/JoinButton" to="." method="_on_join_pressed"]
 
 [editable path="Board/DevBoard"]
