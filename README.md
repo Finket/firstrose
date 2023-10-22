@@ -8,6 +8,7 @@ CURRENT TODO:
 - Export Linux server
 
 Future:
+- Foliage like trees could also be sprites with many directions that are placed with random orientation making them look like many different trees from any one angle
 - Look into low tickrate and tweening
 - Add basic skills to train
 - Add inventory and items, drops, trading

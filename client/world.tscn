@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4snh7bprmdeq"]
 
-[ext_resource type="Script" path="res://scripts/server.gd" id="1_w5wvi"]
+[ext_resource type="Script" path="res://data/Server.gd" id="1_tvoch"]
 [ext_resource type="Texture2D" uid="uid://bflmoeu7b8dx4" path="res://ui/dev_ui.png" id="3_12j77"]
 [ext_resource type="PackedScene" uid="uid://dxv8682dqiwjq" path="res://models/dev_level.tscn" id="6_iykyq"]
 [ext_resource type="Script" path="res://scripts/pathing.gd" id="6_jenf4"]
@@ -16,7 +16,7 @@ properties/0/sync = true
 properties/0/watch = false
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_w5wvi")
+script = ExtResource("1_tvoch")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 5, 0)
@@ -84,11 +84,6 @@ offset_bottom = 224.0
 layout_mode = 2
 text = "Join"
 
-[node name="PortNumber" type="LineEdit" parent="UILayer/Control/StartMenu"]
-layout_mode = 2
-text = "9999"
-alignment = 1
-
 [node name="Chat" type="Control" parent="UILayer/Control"]
 anchors_preset = 0
 offset_right = 40.0
@@ -96,6 +91,7 @@ offset_bottom = 40.0
 script = ExtResource("6_jhc03")
 
 [node name="TextEdit" type="TextEdit" parent="UILayer/Control/Chat"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 442.0
 offset_right = 600.0
@@ -121,6 +117,7 @@ script = ExtResource("7_ewb4l")
 text = "Welcome to firstrose dev version."
 
 [node name="LineEdit" type="LineEdit" parent="UILayer/Control/Chat"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 566.0
 offset_right = 600.0
