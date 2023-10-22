@@ -34,10 +34,6 @@ text = "Start"
 _spawnable_scenes = PackedStringArray("res://player_character_info.tscn")
 spawn_path = NodePath("../UILayer/Control/SubViewportContainer/SubViewport")
 
-[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://chat_box_info.tscn")
-spawn_path = NodePath("../UILayer/Control")
-
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UILayer"]
