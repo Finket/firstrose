@@ -19,3 +19,12 @@ func _on_connection_failed():
 
 func _on_connection_succeeded():
 	print("Connection successful")
+
+@rpc("any_peer", "reliable")
+func fetch_level(level_name, requester):
+	print("fetching test level from server...")
+	rpc_id(1, "fetch_level", level_name, requester)
+
+@rpc("authority", "reliable")
+func return_level(level, requester):
+	instance_from_id(requester).set_level(level)

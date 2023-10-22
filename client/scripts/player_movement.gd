@@ -5,6 +5,9 @@ extends CharacterBody3D
 var path = []
 var path_ind = 0
 const move_speed = 4
+var level
+
+@onready var server = get_tree().root.get_child(0)
 
 func _enter_tree():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
@@ -13,6 +16,11 @@ func _enter_tree():
 #	synchronizer.set_multiplayer_authority(str(name).to_int())
 #	set_name.call_deferred(str(get_multiplayer_authority()))
 	# add_to_group('units')
+
+func _on_join_pressed():
+	# this is just an example server call for now to get some data
+	await get_tree().create_timer(0.5).timeout
+	server.fetch_level("Test", get_instance_id())
 
 func _physics_process(_delta):
 	# if is_multiplayer_authority():
@@ -24,6 +32,10 @@ func _physics_process(_delta):
 			set_velocity(move_vec.normalized() * move_speed)
 			#rpc("remote_set_position", global_position)
 			move_and_slide()
+
+func set_level(new_level):
+	level = new_level
+	print("Level set to " + str(level))
 
 func move_to(new_path):
 	# if is_multiplayer_authority():

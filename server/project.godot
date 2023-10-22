@@ -14,6 +14,10 @@ config/name="firstrose_server"
 run/main_scene="res://Server.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 
+[autoload]
+
+ServerData="*res://ServerData.gd"
+
 [editor]
 
 run/main_run_args="--headless -- port=9999 max-players=16"

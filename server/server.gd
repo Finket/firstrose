@@ -25,3 +25,14 @@ func _peer_connected(player_id):
 
 func _peer_disconnected(player_id):
 	print("User " + str(player_id) + " Disconnected")
+
+@rpc("any_peer", "reliable")
+func fetch_level(level_name, requester):
+	var player_id = multiplayer.get_remote_sender_id()
+	var level = ServerData.player_data["Player Levels"][level_name]
+	print("Sending " + str(level) + " to player " + str(player_id))
+	return_level(level, requester, player_id)
+
+@rpc("authority", "reliable")
+func return_level(level, requester, player_id):
+	rpc_id(player_id, "return_level", level, requester)

@@ -1,22 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4snh7bprmdeq"]
+[gd_scene load_steps=8 format=3 uid="uid://b4snh7bprmdeq"]
 
-[ext_resource type="Script" path="res://data/Server.gd" id="1_tvoch"]
+[ext_resource type="Script" path="res://Server.gd" id="1_5u010"]
 [ext_resource type="Texture2D" uid="uid://bflmoeu7b8dx4" path="res://ui/dev_ui.png" id="3_12j77"]
 [ext_resource type="PackedScene" uid="uid://dxv8682dqiwjq" path="res://models/dev_level.tscn" id="6_iykyq"]
+[ext_resource type="PackedScene" uid="uid://bnxk4t7tt0uta" path="res://player_character.tscn" id="6_j2lol"]
 [ext_resource type="Script" path="res://scripts/pathing.gd" id="6_jenf4"]
 [ext_resource type="Script" path="res://scripts/chat_send.gd" id="6_jhc03"]
-[ext_resource type="Script" path="res://scripts/TextEdit.gd" id="6_pcr40"]
-[ext_resource type="Script" path="res://scripts/Sync.gd" id="7_ewb4l"]
 [ext_resource type="MeshLibrary" uid="uid://bsntenl3uqma0" path="res://models/astar_tiles.tres" id="7_kcfax"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kvk8i"]
-properties/0/path = NodePath("Sync:text")
-properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = false
-
 [node name="Main" type="Node3D"]
-script = ExtResource("1_tvoch")
+script = ExtResource("1_5u010")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 5, 0)
@@ -73,6 +66,8 @@ render_target_update_mode = 4
 [node name="TestCamera" type="Camera3D" parent="UILayer/Control/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.816541, 0.577288, 0, -0.577288, 0.816541, 0, 4.5952, 4.91563)
 
+[node name="Player" parent="UILayer/Control/SubViewportContainer/SubViewport" instance=ExtResource("6_j2lol")]
+
 [node name="StartMenu" type="VBoxContainer" parent="UILayer/Control"]
 layout_mode = 0
 offset_left = 255.0
@@ -105,16 +100,7 @@ context_menu_enabled = false
 wrap_mode = 1
 autowrap_mode = 1
 scroll_v_scroll_speed = 40.0
-script = ExtResource("6_pcr40")
 metadata/_edit_use_anchors_ = true
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="UILayer/Control/Chat/TextEdit"]
-replication_interval = 0.083
-replication_config = SubResource("SceneReplicationConfig_kvk8i")
-
-[node name="Sync" type="Node" parent="UILayer/Control/Chat/TextEdit"]
-script = ExtResource("7_ewb4l")
-text = "Welcome to firstrose dev version."
 
 [node name="LineEdit" type="LineEdit" parent="UILayer/Control/Chat"]
 layout_mode = 0
@@ -132,5 +118,6 @@ _spawnable_scenes = PackedStringArray("res://player_character.tscn")
 spawn_path = NodePath("../UILayer/Control/SubViewportContainer/SubViewport")
 
 [connection signal="pressed" from="UILayer/Control/StartMenu/JoinButton" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="UILayer/Control/StartMenu/JoinButton" to="UILayer/Control/SubViewportContainer/SubViewport/Player" method="_on_join_pressed"]
 
 [editable path="Board/DevBoard"]

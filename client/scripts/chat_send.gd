@@ -9,7 +9,6 @@ func _ready():
 	#await get_tree().create_timer(2).timeout
 	chatTextEdit = $TextEdit
 	inputLineEdit = $LineEdit
-	sync = $TextEdit/Sync
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
