@@ -4,7 +4,7 @@ extends Node
 
 var network = ENetMultiplayerPeer.new()
 var ip = "127.0.0.1"
-var port = 1707
+var port = 13589
 
 
 func _on_join_pressed():
@@ -22,7 +22,7 @@ func _on_connection_succeeded():
 
 @rpc("any_peer", "reliable")
 func fetch_level(level_name, requester):
-	print("fetching test level from server...")
+	# print("fetching test level from server...")
 	rpc_id(1, "fetch_level", level_name, requester)
 
 @rpc("authority", "reliable")

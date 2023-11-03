@@ -4,7 +4,7 @@ extends Node
 
 var network = ENetMultiplayerPeer.new()
 var gateway = SceneMultiplayer.new()
-var port = 1707
+var port = 13589
 var max_players = 40
 
 

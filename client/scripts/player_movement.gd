@@ -17,6 +17,7 @@ func _enter_tree():
 #	set_name.call_deferred(str(get_multiplayer_authority()))
 	# add_to_group('units')
 
+# REMOVE THIS LATER
 func _on_join_pressed():
 	# this is just an example server call for now to get some data
 	await get_tree().create_timer(0.5).timeout
