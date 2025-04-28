@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwngrdl4oj0f1"]
+
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_fbje5"]
+[ext_resource type="MeshLibrary" uid="uid://dfvnf8jsoj2jy" path="res://Resources/tileset.tres" id="2_h2eft"]
+[ext_resource type="PackedScene" uid="uid://cq407gmi6qsh7" path="res://Scenes/player.tscn" id="3_1d6se"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="4_338oh"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="5_ardtj"]
+[ext_resource type="PackedScene" uid="uid://cteluydbhkitq" path="res://Scenes/character.tscn" id="6_ipti6"]
+[ext_resource type="Texture2D" uid="uid://jbp1i1fcfkmb" path="res://Resources/hud.png" id="7_2ckjx"]
+[ext_resource type="Script" path="res://Scripts/input_grabber.gd" id="8_ms7y2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cwds1"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Overworld" type="Node3D"]
+script = ExtResource("1_fbje5")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, -0.5)
+mesh_library = ExtResource("2_h2eft")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 0, 0, 0, 65535, 0, 65535, 65535, 0, 65535, 0, 0, 1, 65535, 0, 0, 1, 0, 65535, 1, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65533, 65534, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 1, 0, 0, 1, 1, 0, 3, 65534, 0, 4, 65534, 0, 4, 65535, 0, 4, 0, 0, 4, 1, 0, 3, 1, 0, 2, 4, 0, 1, 4, 0, 0, 4, 0, 0, 5, 0, 65535, 5, 0, 65535, 4, 0, 65534, 4, 0, 65533, 4, 0, 65533, 5, 0, 65532, 65532, 0, 65531, 65530, 0, 65531, 65531, 0, 65532, 65529, 0, 65533, 65529, 0, 65534, 65529, 0, 65535, 65530, 0, 65535, 65531, 0, 65535, 65532, 0, 65531, 65529, 0, 65535, 65529, 0, 65532, 0, 0, 65531, 0, 0, 65531, 65535, 0, 65530, 65535, 0, 65529, 65535, 0, 65529, 0, 0, 65529, 1, 0, 65530, 1, 0, 65530, 2, 0, 65531, 2, 0, 65531, 3, 0, 65532, 3, 0, 65532, 2, 0, 65532, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 12, 65535, 0, 12, 65534, 0, 13, 65534, 0, 13, 65533, 0, 13, 65532, 0, 12, 65532, 0, 11, 65532, 0, 10, 65532, 0, 9, 65532, 0, 9, 65531, 0, 8, 65532, 0, 7, 65532, 0, 6, 65532, 0, 6, 65533, 0, 5, 65533, 0, 4, 65533, 0)
+}
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(640, 464)
+render_target_update_mode = 4
+
+[node name="Player" parent="SubViewport" instance=ExtResource("3_1d6se")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+current = true
+script = ExtResource("4_338oh")
+
+[node name="InputManager" type="Node" parent="SubViewport/Player"]
+script = ExtResource("5_ardtj")
+
+[node name="Character" parent="." instance=ExtResource("6_ipti6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+mouse_filter = 2
+texture = ExtResource("7_2ckjx")
+
+[node name="CameraView" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 672.0
+offset_bottom = 496.0
+texture = SubResource("ViewportTexture_cwds1")
+script = ExtResource("8_ms7y2")

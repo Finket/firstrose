@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cteluydbhkitq"]
+
+[ext_resource type="Texture2D" uid="uid://c6u37ktriswdf" path="res://Resources/dev_character.png" id="1_fyf1t"]
+
+[node name="Character" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_fyf1t")
+
+[node name="DialogManager" type="Node" parent="."]
