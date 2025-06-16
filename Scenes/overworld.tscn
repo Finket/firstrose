@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwngrdl4oj0f1"]
+[gd_scene load_steps=12 format=3 uid="uid://dwngrdl4oj0f1"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_fbje5"]
 [ext_resource type="MeshLibrary" uid="uid://dfvnf8jsoj2jy" path="res://Resources/tileset.tres" id="2_h2eft"]
 [ext_resource type="PackedScene" uid="uid://cq407gmi6qsh7" path="res://Scenes/player.tscn" id="3_1d6se"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="4_338oh"]
-[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="5_ardtj"]
 [ext_resource type="PackedScene" uid="uid://cteluydbhkitq" path="res://Scenes/character.tscn" id="6_ipti6"]
 [ext_resource type="Texture2D" uid="uid://jbp1i1fcfkmb" path="res://Resources/hud.png" id="7_2ckjx"]
 [ext_resource type="Script" path="res://Scripts/input_grabber.gd" id="8_ms7y2"]
+[ext_resource type="Script" path="res://Scripts/Systems/store_system.gd" id="9_cn8x4"]
+[ext_resource type="Script" path="res://Scripts/Systems/input_system.gd" id="9_egwyb"]
+[ext_resource type="Script" path="res://Scripts/Systems/clickable_system.gd" id="10_otsdg"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cwds1"]
 viewport_path = NodePath("SubViewport")
@@ -36,9 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 current = true
 script = ExtResource("4_338oh")
 
-[node name="InputManager" type="Node" parent="SubViewport/Player"]
-script = ExtResource("5_ardtj")
-
 [node name="Character" parent="." instance=ExtResource("6_ipti6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
@@ -66,3 +65,12 @@ offset_right = 672.0
 offset_bottom = 496.0
 texture = SubResource("ViewportTexture_cwds1")
 script = ExtResource("8_ms7y2")
+
+[node name="StoreSystem" type="Node" parent="."]
+script = ExtResource("9_cn8x4")
+
+[node name="InputSystem" type="Node" parent="."]
+script = ExtResource("9_egwyb")
+
+[node name="ClickableSystem" type="Node" parent="."]
+script = ExtResource("10_otsdg")

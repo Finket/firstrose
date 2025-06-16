@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cteluydbhkitq"]
+[gd_scene load_steps=6 format=3 uid="uid://cteluydbhkitq"]
 
 [ext_resource type="Texture2D" uid="uid://c6u37ktriswdf" path="res://Resources/dev_character.png" id="1_fyf1t"]
+[ext_resource type="Script" path="res://Scripts/Entities/shopkeeper.gd" id="1_tknjb"]
+[ext_resource type="Script" path="res://Scripts/Components/store_component.gd" id="2_svdy0"]
+[ext_resource type="Script" path="res://Scripts/Components/clickable_component.gd" id="4_c1ae3"]
 
-[node name="Character" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vyh8v"]
+
+[node name="Shopkeeper" type="Node3D"]
+script = ExtResource("1_tknjb")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18, 0)
@@ -10,4 +16,14 @@ billboard = 2
 texture_filter = 0
 texture = ExtResource("1_fyf1t")
 
-[node name="DialogManager" type="Node" parent="."]
+[node name="DialogComponent" type="Node" parent="."]
+
+[node name="StoreComponent" type="Node" parent="."]
+script = ExtResource("2_svdy0")
+
+[node name="ClickableComponent" type="StaticBody3D" parent="."]
+script = ExtResource("4_c1ae3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableComponent"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.18, 0)
+shape = SubResource("BoxShape3D_vyh8v")

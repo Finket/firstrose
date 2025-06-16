@@ -2,7 +2,10 @@ extends Camera3D
 
 # TODO: generalize to work for all players
 @onready var player : Node3D = get_parent()
-@onready var sprite : Sprite3D = player.get_node("Sprite3D")
+@onready var sprites : Array[Sprite3D] = [
+	player.get_node("Sprite3D"),
+	player.get_node("Top")
+]
 
 func _process(_delta: float) -> void:
 	look_at(player.get_position())
@@ -11,7 +14,9 @@ func _process(_delta: float) -> void:
 	var camera_direction : Vector2 = Vector2(camera_angle.x, camera_angle.z).normalized()
 	
 	var angle : float = camera_direction.angle_to(player.direction) * 180 / PI + 180
-	sprite.frame = angle_to_sprite(angle)
+	
+	for sprite in sprites:
+		sprite.frame = angle_to_sprite(angle)
 
 func angle_to_sprite(angle: float) -> int:
 	if 80 <= angle && angle < 150:

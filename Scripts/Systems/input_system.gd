@@ -1,13 +1,17 @@
 extends Node
 
-@onready var world : Node3D = get_tree().root.get_child(0)
-@onready var player : Node3D = get_parent()
+signal unhandled_input(result : Dictionary)
+
+const RAY_LENGTH : float = 25
+
 @export var rotation_speed : float = 0.025
+@onready var world : Node3D = get_parent()
+@onready var player : Node3D = $"../SubViewport/Player"
+
 var gridmap : GridMap
 var viewport : SubViewport
 var camera : Camera3D
 var camera_radius : float
-const RAY_LENGTH : float = 25
 
 var cell : Vector3i = Vector3i.ZERO
 var casting : bool = false
@@ -37,9 +41,26 @@ func input_event(event: InputEvent) -> void:
 		var query = PhysicsRayQueryParameters3D.create(from, to, 0xFFFFFFFF, [self])
 		var result = space_state.intersect_ray(query)
 		
-		if result:
+		if result.collider is GridMap:
 			cell = gridmap.local_to_map(result.position.round())
 			casting = true
+			return
+		else:
+			unhandled_input.emit(result)
+	
+	if event.is_action_pressed("info"):
+		var space_state : PhysicsDirectSpaceState3D = world.get_world_3d().get_direct_space_state()
+		var from : Vector3 = camera.project_ray_origin(event.position)
+		var to : Vector3 = from + camera.project_ray_normal(event.position) * RAY_LENGTH
+		var query = PhysicsRayQueryParameters3D.create(from, to, 0xFFFFFFFF, [self])
+		var result = space_state.intersect_ray(query)
+		
+		if result.collider is GridMap:
+			# TODO: Show just "walk here" option
+			return
+		else:
+			# TODO: Show "walk here" and use an examine system to show more
+			return
 
 func move_player():
 	var player_tile_id : int = world.coordinates_to_id(player.real_position)
