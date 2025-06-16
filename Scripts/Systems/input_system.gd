@@ -1,6 +1,6 @@
 extends Node
 
-signal unhandled_input(result : Dictionary)
+signal unhandled_input(result : Dictionary, clicker : Node3D)
 
 const RAY_LENGTH : float = 25
 
@@ -46,7 +46,7 @@ func input_event(event: InputEvent) -> void:
 			casting = true
 			return
 		else:
-			unhandled_input.emit(result)
+			unhandled_input.emit(result, player)
 	
 	if event.is_action_pressed("info"):
 		var space_state : PhysicsDirectSpaceState3D = world.get_world_3d().get_direct_space_state()

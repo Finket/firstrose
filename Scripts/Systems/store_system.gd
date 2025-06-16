@@ -28,6 +28,20 @@ func restock_store(component : Node) -> void:
 			component.stock[item] = [item_stock_data[0] - 1, item_stock_data[1]]
 	pass
 
-func activate(store : StoreComponent) -> void:
-	# Todo: open store UI
+func activate(store : StoreComponent, clicker : Node3D) -> void:
+	# TODO: open store UI
 	print(store.stock)
+	
+	# TODO: THIS IS A TEST. MOVE IT SOMEWHERE ELSE.
+	if clicker.get_node("Top").texture.resource_path == "res://Resources/clothtest2.png":
+		var stock_item : Array = store.stock["clothtest"]
+		if stock_item[0] <= 0:
+			return
+		clicker.get_node("Top").texture = preload("res://Resources/clothtest.png")
+		store.stock["clothtest"] = [stock_item[0] - 1, stock_item[1]]
+	else:
+		var stock_item : Array = store.stock["clothtest2"]
+		if stock_item[0] <= 0:
+			return
+		clicker.get_node("Top").texture = preload("res://Resources/clothtest2.png")
+		store.stock["clothtest2"] = [stock_item[0] - 1, stock_item[1]]
