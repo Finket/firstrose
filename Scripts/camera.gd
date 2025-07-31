@@ -10,13 +10,14 @@ extends Camera3D
 func _process(_delta: float) -> void:
 	look_at(player.get_position())
 	
+	for sprite in sprites:
+		orient_sprite(sprite, player.direction)
+
+func orient_sprite(sprite : Sprite3D, direction : Vector2):
 	var camera_angle : Vector3 = get_global_transform().basis.z
 	var camera_direction : Vector2 = Vector2(camera_angle.x, camera_angle.z).normalized()
-	
-	var angle : float = camera_direction.angle_to(player.direction) * 180 / PI + 180
-	
-	for sprite in sprites:
-		sprite.frame = angle_to_sprite(angle)
+	var angle : float = camera_direction.angle_to(direction) * 180 / PI + 180
+	sprite.frame = angle_to_sprite(angle)
 
 func angle_to_sprite(angle: float) -> int:
 	if 80 <= angle && angle < 150:

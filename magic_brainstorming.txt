@@ -1,0 +1,38 @@
+﻿
+Astrology 
+- made-up in-game solar system
+- aligned celestial bodies will have effects on the astrologer
+- can infuse spells during alignments for different effects
+- also the direction of celestial bodies matters etc.
+
+Alchemy
+- transmutation of substances into more valuable forms
+- includes potioncraft
+
+Sacred Geometry
+- drawing shapes to infuse spells
+- includes talismans
+- hand signs whatnot
+- applies to sacred spaces and fung sui
+- Fung sui -equivalent
+
+Prophecy
+- scrying
+- augury
+- crystallomancy
+
+Golemancy
+- bringing life into inanimate objects
+- necromancy is just bone golemancy
+
+Invocation
+- demon-summoning
+- warlocklike abilities
+- priestlike abilities
+
+Conjuration
+- Astral projection
+
+Incantation
+- speaking and writing
+

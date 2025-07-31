@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7g1rox8rc726"]
+[gd_scene load_steps=11 format=3 uid="uid://c7g1rox8rc726"]
 
 [ext_resource type="Texture2D" uid="uid://cfnnj4rvuvpjv" path="res://Resources/dev_tile.png" id="1_82mdi"]
+[ext_resource type="Texture2D" uid="uid://da7r46i2xcg5t" path="res://Resources/flowrg.png" id="2_7lm6a"]
+[ext_resource type="Texture2D" uid="uid://p3ji1ktv0m8f" path="res://Resources/mossiguess.png" id="3_gagv2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u7lq"]
 shading_mode = 0
@@ -17,6 +19,30 @@ size = Vector2(1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_djtg0"]
 size = Vector3(1, 0.01, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqooa"]
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("2_7lm6a")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_odwu1"]
+material = SubResource("StandardMaterial3D_aqooa")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55dos"]
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("3_gagv2")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t6ave"]
+material = SubResource("StandardMaterial3D_55dos")
+size = Vector2(1, 1)
+
 [node name="MeshLibrary" type="Node3D"]
 
 [node name="DevTile" type="MeshInstance3D" parent="."]
@@ -26,4 +52,22 @@ mesh = SubResource("PlaneMesh_qtndj")
 [node name="StaticBody3D" type="StaticBody3D" parent="DevTile"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DevTile/StaticBody3D"]
+shape = SubResource("BoxShape3D_djtg0")
+
+[node name="GrassTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh = SubResource("PlaneMesh_odwu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GrassTile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrassTile/StaticBody3D"]
+shape = SubResource("BoxShape3D_djtg0")
+
+[node name="MossTile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh = SubResource("PlaneMesh_t6ave")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MossTile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MossTile/StaticBody3D"]
 shape = SubResource("BoxShape3D_djtg0")
